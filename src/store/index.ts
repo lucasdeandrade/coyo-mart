@@ -17,19 +17,19 @@ export default createStore({
     },
   },
   actions: {
-    getProducts({commit}){
-        axios
-          .get('http://127.0.0.1:3000/products')
-          .then(response => {
-            commit('getProducts', response.data);
-          })
+    async getProducts({commit}){
+        await axios
+              .get('http://127.0.0.1:3000/products')
+              .then(response => {
+                commit('getProducts', response.data);
+              })
     },
-    getClients({commit}){
-      axios
-        .get('http://127.0.0.1:3000/clients')
-        .then(response => {
-          commit('getClients', response.data);
-        })
+    async getClients({commit}){
+      await axios
+            .get('http://127.0.0.1:3000/clients')
+            .then(response => {
+              commit('getClients', response.data);
+            })
     }
   },
   modules: {

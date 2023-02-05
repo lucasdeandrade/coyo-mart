@@ -41,6 +41,7 @@
       data (){
         return {
           searchProduct: '',
+          products: {}
         }
       },
       computed: {    
@@ -52,7 +53,7 @@
       },
       methods: {
         showProduct(id){
-          this.$router.push("/products/" + id)
+          this.$router.push(`/products/${id}`)
         },
         
       }

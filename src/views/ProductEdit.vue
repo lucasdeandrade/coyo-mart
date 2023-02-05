@@ -1,46 +1,45 @@
 <template>
     <header class="text-start text-secondary shadow-sm px-3 py-2 mb-4  "><h3>Produtos</h3> </header>
     <div class="col-10 shadow"> 
-      <div class="row justify-content-between p-0 pt-2 m-4 my-0 mb-0 mr-4">
+      <div class="row justify-content-between">
         <h5 class="card-title col-5 p-4 pb-0 text-start">Detalhes do Produto</h5>
-        <button class="col-1 m-0 p-0 btn btn-outline-primary btn-sm rounded" @click="goToEdit(product.id)">Editar</button>
       </div>
       <hr class="mx-3">  
         <div class="card-body p-3 pt-0">
             <div class="text-start col-6 mb-4" >
                 <label class="fw-bold">Nome</label>
-                <div class="text-light-emphasis bg-dark-subtle form-control" >{{ this.product.name }}</div>
+                <input type="text" class="form-control" v-model="this.product.name"/>
             </div>
             <div class="text-start col-6 mb-4" name="description-product">
                 <label class="fw-bold text">Descrição</label>
                 <div class="form-floating">
-                    <textarea v-bind:readonly="true" class="bg-dark-subtle form-control" v-model="product.description" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <textarea class="form-control" v-model="product.description" id="floatingTextarea2" style="height: 100px"></textarea>
                 </div>
             </div>
             <div class="text-start col-3 mb-4" name="description-product">
                 <label class="fw-bold">Categorias</label>
                 <form class="form-inline">
-                    <select class="text-light-emphasis bg-dark-subtle form-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                        <option :value="this.category.description " selected>{{ this.category.description}}</option>
+                    <select class="form-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" v-model="this.product.category.id">
+                        <option :value="this.category.id " selected>{{ this.category.description}}</option>
                         <option
                             v-for="(category, index) in this.categories"
                             v-show="this.category.id != category.id" 
-                            :key="index" :value="category.id">{{ category.description}}
+                            :key="index" :value="this.category.id ">{{ category.description}}
                         </option>
                     </select>
                 </form>
             </div>
             <div class="text-start col-3 mb-4" >
                 <label class="fw-bold">Unidade de Medida</label>
-                <div class="text-light-emphasis bg-dark-subtle form-control" >{{ this.product.unit_type }}</div>
+                <input type="text" class="form-control" v-model="this.product.unit_type"/>
             </div>
             <div class="text-start col-3 mb-4" >
                 <label class="fw-bold">Quantidade em estoque</label>
-                <div class="text-light-emphasis bg-dark-subtle form-control my-1 mr-sm-2" >{{ this.product.stock}}</div>
+                <input class="form-control my-1 mr-sm-2" v-model="this.product.stock" />
             </div>
             <div class="text-start col-3 mb-4" >
                 <label class="fw-bold">Valor</label>
-                <div class="text-light-emphasis bg-dark-subtle form-control my-1 mr-sm-2" >{{this.product.price.toFixed(2)}}</div>
+                <input class="form-control my-1 mr-sm-2" v-model="this.product.price"/>
             </div>
             <div class="text-start col-3 mb-4" >
                 <div class="form-check">
@@ -49,6 +48,10 @@
                         Em destaque?
                     </label>
                 </div>
+            </div>
+            <div class="col-3 d-flex justify-content-around">
+                <button class="btn btn-primary btn-sm rounded px-3" @click="submit" type="submit">Salvar</button>
+                <button class="btn text-primary btn-outline border border-primary btn-sm rounded px-3" @click="cancelSubmit(this.product.id)" type="submit">Cancelar</button>
             </div>
         </div>
     </div>
@@ -64,10 +67,10 @@ export default {
         return {
           product: {},
           categories: {},
-          category: {}
+          category: {},
         }
     },
-    async created(){
+    created(){
         axios
             .get(`http://127.0.0.1:3000/products/${this.$route.params.id}`)
             .then(response => {
@@ -80,9 +83,15 @@ export default {
             this.categories = response.data;
         })
     },
-    methods:{
-        goToEdit(id){
-            this.$router.push("/products/"+ id + "/edit")
+    methods: {
+        async submit(){
+            await axios
+                    .put(`http://127.0.0.1:3000/products/${this.$route.params.id}`, this.product)
+                    .then(),
+            this.$router.push("/products/" + this.$route.params.id )
+        },
+        cancelSubmit(id){
+            this.$router.push("/products/" + id)
         }
     }
 }
