@@ -1,13 +1,9 @@
 <template>
   <div class="row flex-nowrap">
-    <div class="col-2 sidebar border">
+    <div class="col-2 sidebar p-0 ">
       <img class="coyo_logo" src="./assets/coyo_logo.png" alt="">
-      <div class="nav-item">
-        <router-link to="/products">Produtos</router-link>
-      </div>
-      <div class="nav-item">
-        <router-link  to="/clients">Clients</router-link>
-      </div>
+      <div @click="this.$router.push('/products')" class="nav-item p-1 mb-1">Produtos</div>
+      <div @click="this.$router.push('/clients')" class="nav-item p-1">Clientes</div>
     </div>
     <div class="col main">
       <router-view/>
@@ -43,13 +39,11 @@
 }
 
 .nav-item {
+  cursor: pointer;
   background-color: rgb(33, 33, 91);
-
-  a {
-    font-weight: bold;
-    text-decoration: none;
-    color: lightgray;
-  }
+  font-weight: bold;
+  text-decoration: none;
+  color: lightgray;
 }
 .coyo_logo {
   width: 200px;

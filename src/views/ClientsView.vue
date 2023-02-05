@@ -60,43 +60,50 @@
 
 
 <template>
-      <header class="text-start text-secondary shadow-sm px-2 py-2 mb-4  "><h3>Clientes</h3> </header>
-      <div class="shadow"> 
+      <header class="text-start text-white shadow-sm px-2 py-2 mb-4 bg-dark-subtle"><h3>Clientes</h3> </header>
+      <div class="col-10 shadow"> 
         <div class="row justify-content-between">
           <h5 class="card-title col-5 p-4 pb-0 text-start">Listagem de Clientes</h5>
           <div class="col-4 align-self-end input mx-3">
-            <input type="text" class="form-control" placeholder="Procurar" aria-label="Search" >
+            <input type="text" class="form-control" placeholder="Procurar" aria-label="Search" v-model="searchClient" >
           </div>
         </div>
         <hr class="mx-3">  
-          <div class="card-body">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Telefone</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(client, index) in clients" :key="index">
-                  <td><p>{{ client.name }}</p></td>
-                  <td><p>{{ client.email }}</p></td>
-                  <td><p>{{ client.phone }}</p></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="p-2">
+          <table class="table table-hover">
+            <thead>
+              <tr class="bg-dark-subtle">
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr v-for="(client, index) in filteredClients" :key="index">
+                <td><p>{{ client.name }}</p></td>
+                <td><p>{{ client.email }}</p></td>
+                <td><p>{{ client.phone }}</p></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
   </template>
   
   <script>
       export default ({
           name: 'ClientsView',
+          data(){
+            return {
+              searchClient: '',
+            }
+          },
           computed: {
-              clients(){
-                  return this.$store.state.clients;
-              }
+            filteredClients(){
+              return this.$store.state.clients.filter(client => {
+                return client.name.toLowerCase().includes(this.searchClient.toLowerCase())
+              })
+            }
           },
       })
   </script>
