@@ -5,8 +5,8 @@
       <div @click="this.$router.push('/products')" class="nav-item p-1 mb-1">Produtos</div>
       <div @click="this.$router.push('/clients')" class="nav-item p-1">Clientes</div>
     </div>
-    <div class="col main">
-      <router-view/>
+    <div class="col">  
+      <router-view />
     </div>
   </div>
 </template>
@@ -47,6 +47,22 @@
 }
 .coyo_logo {
   width: 200px;
+}
+.main{  
+  max-height: 82vh;
+  overflow-y:scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+  }
+  &::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+         /* color of the tracking area */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: lightgray;    /* color of the scroll thumb */
+    border-radius: 20px;  
+  }
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <header class="text-start text-secondary shadow-sm px-3 py-2 mb-4  "><h3>Produtos</h3> </header>
-    <div class="col-10 shadow"> 
+    <div class="col-10 shadow main"> 
       <div class="row justify-content-between p-0 pt-2 m-4 my-0 mb-0 mr-4">
         <h5 class="card-title col-5 p-4 pb-0 text-start">Detalhes do Produto</h5>
         <button class="col-1 m-0 p-0 btn btn-outline-primary btn-sm rounded" @click="goToEdit(product.id)">Editar</button>
@@ -44,8 +44,8 @@
             </div>
             <div class="text-start col-3 mb-4" >
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="fw-bold form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input" disabled :checked="this.product.featured" type="checkbox" id="flexCheckDefault">
+                    <label class="fw-bold form-check-label"  for="flexCheckDefault">
                         Em destaque?
                     </label>
                 </div>
@@ -87,3 +87,4 @@ export default {
     }
 }
 </script>
+

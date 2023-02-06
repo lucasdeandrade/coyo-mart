@@ -1,6 +1,6 @@
 <template>
   <header class="text-start text-white shadow-sm px-2 py-2 mb-4 bg-dark-subtle"><h3>Produtos</h3></header>
-  <div class="col-10 shadow"> 
+  <div class="col-11 shadow main"> 
     <div class="row justify-content-between">
       <h5 class="card-title col-5 p-4 pb-0 text-start">Listagem de Produtos</h5>
       <div class="col-4 align-self-end input mx-3">

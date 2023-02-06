@@ -3,6 +3,8 @@ import Products from '../views/ProductsView.vue'
 import ProductShow from '../views/ProductShow.vue'
 import Clients from '../views/ClientsView.vue'
 import ProductEdit from '../views/ProductEdit.vue'
+import ProductCreate from '../views/ProductCreate.vue'
+
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -20,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/products/:id/edit',
     name: 'ProductEdit',
     component: ProductEdit
+  },
+  {
+    path: '/products/create',
+    name: 'ProductCreate',
+    component: ProductCreate
   },
   {
     path: '/clients',
