@@ -1,13 +1,21 @@
 <template>
   <header class="text-start text-white shadow-sm px-2 py-2 mb-4 bg-dark-subtle"><h3>Produtos</h3></header>
   <div class="col-11 shadow main"> 
-    <div class="row justify-content-between">
-      <h5 class="card-title col-5 p-4 pb-0 text-start">Listagem de Produtos</h5>
-      <div class="col-4 align-self-end input mx-3">
-        <input type="text" class="form-control" placeholder="Procurar" aria-label="Search" v-model="searchProduct" >
+    <div class="row justify-content-between pt-3 px-3">
+      <h5 class="card-title col-5 align-self-center pb-0 text-start">Listagem de Produtos</h5>
+      <div class="col-5 align-self-end input mx-2">
+        <div class="row">
+          <button class="col-3 btn btn-outline-primary m-0 mx-2" @click="this.$router.push(`/products/create`)">Novo</button>
+          <input type="text" class="col form-control" placeholder="Procurar" aria-label="Search" v-model="searchProduct" >
+          <select class="form-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" v-model="this.order">
+              <option value="Asc" selected>Maior</option>
+              <option value="Desc">Menor</option>
+          </select>
+        </div>
+        
       </div>
     </div>
-    <hr class="mx-3">  
+    <hr class="mx-2">  
       <div class="p-2">
         <table class="table table-hover">
           <thead>
@@ -41,12 +49,14 @@
       data (){
         return {
           searchProduct: '',
-          products: {}
+          products: {},
+          
         }
       },
       computed: {    
           filteredProducts(){
-            return this.$store.state.products.filter(product => {
+
+             var a = this.$store.state.products.filter(product => {
               return product.name.toLowerCase().includes(this.searchProduct.toLowerCase())
             })
           }

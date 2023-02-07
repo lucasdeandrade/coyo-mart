@@ -1,8 +1,8 @@
 <template>
     <header class="text-start text-secondary shadow-sm px-3 py-2 mb-4  "><h3>Produtos</h3> </header>
     <div class="col-10 shadow main"> 
-      <div class="row justify-content-between">
-        <h5 class="card-title col-5 p-4 pb-0 text-start">Criação de Produto</h5>
+      <div class="row justify-content-between pt-3 px-3">
+        <h5 class="card-title col-5 pb-0 text-start">Criação de Produto</h5>
       </div>
       <hr class="mx-3">  
         <div class="card-body p-3 pt-0">
@@ -79,10 +79,13 @@ export default {
             await axios
                     .post(`http://127.0.0.1:3000/products`, this.product)
                     .then(   
+
                     )
                     .catch(error => {
                         alert("Preencha os campos obrigatorios")
                     })
+                    this.$router.push("/products")
+
         },
         cancelSubmit(){
             this.$router.push("/products")
