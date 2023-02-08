@@ -37,6 +37,9 @@
   background-color: rgb(43, 42, 115);
   height: 100vh;
 }
+.coyoButton{
+    width: 80px;
+  }
 
 .nav-item {
   cursor: pointer;

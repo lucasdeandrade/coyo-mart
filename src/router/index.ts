@@ -4,6 +4,7 @@ import ProductShow from '../views/ProductShow.vue'
 import Clients from '../views/ClientsView.vue'
 import ProductEdit from '../views/ProductEdit.vue'
 import ProductCreate from '../views/ProductCreate.vue'
+import ClientCreate from '../views/ClientCreate.vue'
 
 
 
@@ -32,7 +33,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/clients',
     name: 'ClientsView',
     component: Clients
-  }
+  },
+  {
+    path: '/clients/create',
+    name: 'ClientCreate',
+    component: ClientCreate
+  },
 ]
 
 const router = createRouter({

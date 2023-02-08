@@ -1,74 +1,16 @@
-<!-- <template>
-    <div>
-      <table>
-        <tr v-for="(client, index) in clients" :key="index">
-          <td>{{ client.name }}</td>
-          <td>{{ client.email }}</td>
-          <td>{{ client.cpf }}</td>
-          <td>{{ client.phone }}</td>
-          <td>
-            <button @click="editClient(client.id)">Edit</button>
-            <button @click="deleteClient(client.id)">Delete</button>
-          </td>
-        </tr>
-      </table>
-      <button @click="addClient()">Add</button>
-    </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-
-  export default {
-    data() {
-      return {
-        clients: []
-      }
-    },
-    mounted() {
-      this.fetchClints();
-    },
-    methods: {
-      async fetchClints() {
-        const response = await axios.get('http://127.0.0.1:3000/clients');
-        this.clients = response.data;
-      },
-      async addClient() {
-        const response = await axios.post('http://127.0.0.1:3000/clients', {
-          name: 'New Client',
-          cpf: 'Cpf',
-          email: 'This is a new client',
-          phone: 'Telefone'
-        });
-        this.clients.push(response.data);
-      },
-      async editClient(id) {
-        const client = this.clients.find(client => client.id === id);
-        client.name = 'Edited client';
-        client.cpf = 'This is an edited client';
-        client.phone = 'This is a edited phone'
-        client.email = 'This is a edited email'
-        await axios.put(`http://127.0.0.1:3000/clients${id}`, client);
-      },
-      async deleteClient(id) {
-        await axios.delete(`http://127.0.0.1:3000/clients${id}`);
-        this.clients = this.clients.filter(client => client.id !== id);
-      }
-    }
-  }
-  </script> -->
-
-
 <template>
       <header class="text-start text-white shadow-sm px-2 py-2 mb-4 bg-dark-subtle"><h3>Clientes</h3> </header>
-      <div class="col-10 shadow"> 
-        <div class="row justify-content-between">
-          <h5 class="card-title col-5 p-4 pb-0 text-start">Listagem de Clientes</h5>
-          <div class="col-4 align-self-end input mx-3">
-            <input type="text" class="form-control" placeholder="Procurar" aria-label="Search" v-model="searchClient" >
+      <div class="col-11 shadow main"> 
+        <div class="row justify-content-between pt-3 px-3">
+          <h5 class="card-title col-5 align-self-center pb-0 text-start">Listagem de Clientes</h5>
+          <div class="col-4 align-self-end input">
+            <div class="row mt-2">
+              <button class="col-3 btn btn-outline-primary coyoButton" @click="this.$router.push(`/clients/create`)">Novo</button>
+              <input type="text" class="col mx-2 form-control" placeholder="Procurar" aria-label="Search" v-model="searchClient" >
+            </div>
           </div>
         </div>
-        <hr class="mx-3">  
+        <hr class="mx-2">  
         <div class="p-2">
           <table class="table table-hover">
             <thead>
