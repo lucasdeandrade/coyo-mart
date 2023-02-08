@@ -21,7 +21,7 @@
               </tr>
             </thead>
             <tbody >
-              <tr v-for="(client, index) in filteredClients" :key="index">
+              <tr v-for="(client, index) in filteredClients" :key="index" @click="this.$router.push(`/clients/${client.id}`)">
                 <td><p>{{ client.name }}</p></td>
                 <td><p>{{ client.email }}</p></td>
                 <td><p>{{ client.phone }}</p></td>

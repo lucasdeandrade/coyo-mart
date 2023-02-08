@@ -5,6 +5,8 @@ import Clients from '../views/ClientsView.vue'
 import ProductEdit from '../views/ProductEdit.vue'
 import ProductCreate from '../views/ProductCreate.vue'
 import ClientCreate from '../views/ClientCreate.vue'
+import ClientShow from '../views/ClientShow.vue'
+import ClientEdit from '../views/ClientEdit.vue'
 
 
 
@@ -38,6 +40,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/clients/create',
     name: 'ClientCreate',
     component: ClientCreate
+  },
+  {
+    path: '/clients/:id',
+    name: 'ClientShow',
+    component: ClientShow
+  },
+  {
+    path: '/clients/:id/edit',
+    name: 'ClientEdit',
+    component: ClientEdit
   },
 ]
 

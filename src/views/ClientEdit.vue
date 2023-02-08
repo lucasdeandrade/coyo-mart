@@ -2,7 +2,7 @@
   <header class="text-start text-secondary shadow-sm px-3 py-2 mb-4  "><h3>Clientes</h3> </header>
   <div class="col-10 shadow main"> 
     <div class="row justify-content-between pt-3 px-3">
-      <h5 class="card-title col-5 pb-0 text-start">Criação de Cliente</h5>
+      <h5 class="card-title col-5 pb-0 text-start">Detalhes do Cliente</h5>
     </div>
     <hr class="mx-3">  
       <div class="card-body p-3 pt-0">
@@ -41,22 +41,23 @@ export default {
         client: {},
       }
   },
+  async created(){
+    axios
+    .get(`http://127.0.0.1:3000/clients/${this.$route.params.id}`)
+    .then(response => {
+      this.client = response.data;
+    })
+  },
   methods: {
-      async submit(){
-          await axios
-                  .post(`http://127.0.0.1:3000/clients`, this.client)
-                  .then(   
-                    
-                  )
-                  .catch(error => {
-                      alert("Preencha os campos obrigatorios")
-                  })
-                  this.$router.push("/clients")
-
-      },
-      cancelSubmit(){
-          this.$router.push("/clients")
-      }
+    async submit(){
+            await axios
+                    .put(`http://127.0.0.1:3000/clients/${this.$route.params.id}`, this.client)
+                    .then(),
+            this.$router.push("/clients/" + this.$route.params.id )
+          },
+          cancelSubmit(){
+              this.$router.push(`/clients/${this.$route.params.id}`)
+          }
   }
 }
 </script>
