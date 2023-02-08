@@ -38,7 +38,7 @@
             <tr v-for="(product, index) in filteredProducts" :key="index" @click="showProduct(product.id)">
               <td class="col"><p>Implementar</p></td> 
               <td class="col"><p>{{ product.name }}</p></td>
-              <td class="col"><p>{{ product.category_id }}</p></td>
+              <td class="col"><p>{{ setCategory(product.category_id)}}</p></td>
               <td class="col"><p>{{ product.unit_type }}</p></td>
               <td class="col"><p>{{ product.price.toFixed(2) }}</p></td>
               <td class="col"><p>{{ product.stock }}</p></td>
@@ -50,15 +50,25 @@
 </template>
 
 <script>
+
+  import axios from 'axios'
+
   export default ({
       name: 'ProductsList',
       data (){
         return {
           searchProduct: '',
           products: {},
-          order: 'Asc'
-          
+          order: 'Asc',
+          categories: {}
         }
+      },
+      created() {
+        axios
+          .get(`http://127.0.0.1:3000/categories`)
+          .then(response => {
+            this.categories = response.data;
+        })
       },
       computed: {    
           filteredProducts(){
@@ -82,8 +92,12 @@
             if(a.price > b.price) return 1;
             return 0;
           }
+        },
+        setCategory(category_id){
+          return this.categories.filter((category) => {
+                  return (category.id == category_id)
+                })[0].description
         }
-        
       }
   })
 </script>

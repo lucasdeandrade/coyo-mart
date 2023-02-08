@@ -5,6 +5,7 @@ export default createStore({
   state: {
     products: [],
     clients: [],
+    categories: []
   },
   getters: {
   },
@@ -15,6 +16,9 @@ export default createStore({
     getClients(state, clients){
       state.clients = clients;
     },
+    getCategories(state, categories){
+      state.categories = categories;
+    }
   },
   actions: {
     async getProducts({commit}){
@@ -29,6 +33,13 @@ export default createStore({
             .get('http://127.0.0.1:3000/clients')
             .then(response => {
               commit('getClients', response.data);
+            })
+    },
+    async getCategories({commit}){
+      await axios
+            .get('http://127.0.0.1:3000/categories')
+            .then(response => {
+              commit('getCategories', response.data);
             })
     }
   },

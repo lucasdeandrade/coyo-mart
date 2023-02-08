@@ -39,16 +39,7 @@
         </div>
         <div class="text-start col-3 mb-4" name="description-product">
           <label class="fw-bold">Categorias</label>
-          <form class="form-inline">
-            <select class="text-light-emphasis bg-dark-subtle form-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-              <option :value="this.category.description " selected>{{ this.category.description}}</option>
-              <option
-              v-for="(category, index) in this.categories"
-              v-show="this.category.id != category.id" 
-              :key="index" :value="category.id">{{ category.description}}
-            </option>
-          </select>
-        </form>
+          <div class="text-light-emphasis bg-dark-subtle form-control" >{{ this.product.category.description }}</div> 
       </div>
       <div class="text-start col-3 mb-4" >
         <label class="fw-bold">Unidade de Medida</label>

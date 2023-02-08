@@ -78,13 +78,11 @@ export default {
         async submit(){
             await axios
                     .post(`http://127.0.0.1:3000/products`, this.product)
-                    .then(   
-
-                    )
+                    .then(this.$router.push("/products"))
                     .catch(error => {
                         alert("Preencha os campos obrigatorios")
                     })
-                    this.$router.push("/products")
+                    location.reload()
 
         },
         cancelSubmit(){

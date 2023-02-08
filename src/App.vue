@@ -2,6 +2,7 @@
   <div class="row flex-nowrap">
     <div class="col-2 sidebar p-0 ">
       <img class="coyo_logo" src="./assets/coyo_logo.png" alt="">
+      <div @click="this.$router.push('/categories')" class="nav-item p-1 mb-1">Categorias</div>
       <div @click="this.$router.push('/products')" class="nav-item p-1 mb-1">Produtos</div>
       <div @click="this.$router.push('/clients')" class="nav-item p-1">Clientes</div>
     </div>
@@ -18,6 +19,7 @@
     created() {
       this.$store.dispatch('getProducts')
       this.$store.dispatch('getClients')
+      this.$store.dispatch('getCategories')
     }
 
   }
