@@ -4,21 +4,23 @@
       <div class="modal-content p-4 dialog ">
         <button type="button" class="col-1 align-self-end btn-close" data-bs-dismiss="modal"></button>
         <div class="modal-body pt-2">
-            <div class="row justify-content-between pt-3 px-3">
-              <h5 class="card-title col pb-0 text-start">Editando Categoria</h5>
-              <button type="button" class="col-2 mx-3 btn btn-outline-danger btn-sm rounded" @click="deleteCategory">Deletar</button>
-            </div>
-            <hr class="mx-3">  
-              <div class="card-body p-3 pt-0">
+          <div class="row justify-content-between pt-3 px-3">
+            <h5 class="card-title col pb-0 text-start">Editando Categoria</h5>
+            <button type="button" class="col-2 mx-3 btn btn-outline-danger btn-sm rounded" @click="deleteCategory">Deletar</button>
+          </div>
+          <hr class="mx-3">  
+          <form >
+            <div class="card-body p-3 pt-0">
                 <div class="text-start col-6 mb-4" >
                   <label class="fw-bold">Nome</label>
                   <input type="name" class="form-control" required v-model="this.category.description"/>
                 </div>
-                <div class="col-6 d-flex justify-content-around">
-                  <button class="btn btn-primary btn-sm rounded px-3" @click="submitNewCategory" type="submit">Salvar</button>
-                  <button class="btn text-primary btn-outline border border-primary btn-sm rounded px-3" data-bs-dismiss="modal">Cancelar</button>
-                </div>
+              <div class="col-6 d-flex justify-content-around">
+                <button class="btn btn-primary btn-sm rounded px-3" @click="submit" type="submit">Salvar</button>
+                <button class="btn text-primary btn-outline border border-primary btn-sm rounded px-3" data-bs-dismiss="modal">Cancelar</button>
               </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -83,16 +85,19 @@
           this.category = category
         },
         async submit(){
-          await axios
+          if(this.category.id){
+            await axios
                   .put(`http://127.0.0.1:3000/categories/${this.category.id}`, this.category)
-                  .then(),
+                  .then()
           location.reload()
-        },
-        async submitNewCategory(){
-          await axios
+
+          }else{
+            await axios
                   .post(`http://127.0.0.1:3000/categories`, this.category)
-                  .then(),
-          location.reload()
+                  .then()
+            location.reload()
+          }
+          
         },
         async deleteCategory(){
           var productsWithThisCategory =this.$store.state.products.filter(product=>{

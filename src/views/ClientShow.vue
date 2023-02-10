@@ -76,7 +76,6 @@ export default {
           this.$router.push('/clients')
         )
         location.reload()
-
       }catch(error){
         console.log(error)
       }
