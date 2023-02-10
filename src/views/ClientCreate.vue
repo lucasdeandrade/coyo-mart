@@ -45,14 +45,13 @@ export default {
       async submit(){
           await axios
                   .post(`http://127.0.0.1:3000/clients`, this.client)
-                  .then(   
-                    
-                  )
+                  .then( this.$router.push("/clients") )
                   .catch(error => {
-                      alert("Preencha os campos obrigatorios")
+                      if(error.response.status){
+                        alert("Não pode existir Cpf e Email iguais")
+                      }
                   })
-                  this.$router.push("/clients")
-
+                  location.reload()
       },
       cancelSubmit(){
           this.$router.push("/clients")

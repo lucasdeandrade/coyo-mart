@@ -5,7 +5,7 @@
           <h5 class="card-title col-5 align-self-center pb-0 text-start">Listagem de Clientes</h5>
           <div class="col-4 align-self-end input">
             <div class="row mt-2">
-              <button class="col-3 btn btn-outline-primary coyoButton" @click="this.$router.push(`/clients/create`)">Novo</button>
+              <coyoButton text="Novo" route="/clients/create"/>
               <input type="text" class="col mx-2 form-control" placeholder="Procurar" aria-label="Search" v-model="searchClient" >
             </div>
           </div>
@@ -33,12 +33,17 @@
   </template>
   
   <script>
+      import coyoButton from '../components/CoyoButton.vue'
+
       export default ({
           name: 'ClientsView',
           data(){
             return {
               searchClient: '',
             }
+          },
+          components: {
+            coyoButton
           },
           computed: {
             filteredClients(){

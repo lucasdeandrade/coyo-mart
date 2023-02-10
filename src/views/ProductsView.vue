@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="row mt-2">
-            <button class="col-3 btn btn-outline-primary coyoButton" @click="this.$router.push(`/products/create`)">Novo</button>
+            <coyoButton text="Novo" route="/products/create"/>
             <input type="text" class="col mx-2 form-control" placeholder="Procurar" aria-label="Search" v-model="searchProduct" >
           </div>
         </div>
@@ -52,6 +52,7 @@
 <script>
 
   import axios from 'axios'
+  import coyoButton from '../components/CoyoButton.vue'
 
   export default ({
       name: 'ProductsList',
@@ -62,6 +63,9 @@
           order: 'Asc',
           categories: {}
         }
+      },
+      components: {
+        coyoButton
       },
       created() {
         axios

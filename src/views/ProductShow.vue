@@ -34,7 +34,7 @@
         <div class="text-start col-6 mb-4" name="description-product">
           <label class="fw-bold text">Descrição</label>
           <div class="form-floating">
-            <textarea v-bind:readonly="true" class="bg-dark-subtle form-control" v-model="product.description" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea v-bind:readonly="true" class="bg-dark-subtle text-light-emphasis form-control" v-model="product.description" id="floatingTextarea2" style="height: 100px"></textarea>
           </div>
         </div>
         <div class="text-start col-3 mb-4" name="description-product">
@@ -69,16 +69,15 @@
 
 import axios from "axios";
 
-
 export default {
   data(){
     return {
       product: {},
       categories: {},
       category: {},
-      showModal: false
     }
   },
+  
   async created(){
     axios
     .get(`http://127.0.0.1:3000/products/${this.$route.params.id}`)

@@ -2,7 +2,7 @@
   <header class="text-start text-secondary shadow-sm px-3 py-2 mb-4  "><h3>Clientes</h3> </header>
   <div class="col-10 shadow main"> 
     <div class="row justify-content-between pt-3 px-3">
-      <h5 class="card-title col-5 pb-0 text-start">Detalhes do Cliente</h5>
+      <h5 class="card-title col-5 pb-0 text-start">Editando Cliente</h5>
     </div>
     <hr class="mx-3">  
       <div class="card-body p-3 pt-0">
