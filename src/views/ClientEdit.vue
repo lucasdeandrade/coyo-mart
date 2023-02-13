@@ -60,8 +60,13 @@ export default {
                     }
                   })
                   .catch(error => {
-                      if(error.response.status == 402){
-                        alert("Cliente já cadastrado")
+                      if(error.response.status == 422){
+                        if(error.response.data.cpf){
+                          alert("Cpf já existente")
+                        }
+                        if(error.response.data.email){
+                          alert("Email já existente")
+                        }
                       }
                   })
           },

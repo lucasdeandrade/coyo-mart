@@ -1,6 +1,6 @@
 <template>
   <header class="text-start text-white shadow-sm px-2 py-2 mb-4 bg-dark-subtle"><h3>Produtos</h3></header>
-  <div class="col-11 shadow"> 
+  <div class="col-11 shadow main"> 
     <div class="row justify-content-between pt-3 px-3">
       <h5 class="card-title col-5 align-self-center pb-0 text-start">Listagem de Produtos</h5>
       <div class="col-6 align-self-end input ">
@@ -107,13 +107,13 @@
 </script>
 
 <style lang="scss">
-  table:nth-last-child(1){
-    text-align: -webkit-center;
-  }
-  td p{
-      text-overflow: ellipsis;
-      overflow: hidden;
-      max-width: 30ch;
-      white-space: nowrap;
+    table:nth-last-child(1){
+      text-align: -webkit-center;
     }
-</style>
+    td p{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 30ch;
+        white-space: nowrap;
+      }
+  </style>

@@ -59,12 +59,19 @@ export default {
               await axios
                       .post(`http://127.0.0.1:3000/clients`, this.client)
                       .then((response) => {
+                        if(response.status == 201 ){
                           alert('Cliente criado com sucesso')
                           this.client = {}
+                        }
                       })
                       .catch(error => {
-                        if(error.response.status == 402){
-                          alert("Cliente já cadastrado")
+                        if(error.response.status == 422){
+                          if(error.response.data.cpf){
+                            alert("Cpf já existente")
+                          }
+                          if(error.response.data.email){
+                            alert("Email já existente")
+                          }
                         }
                       })
             },

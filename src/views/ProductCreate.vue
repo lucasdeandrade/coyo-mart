@@ -32,11 +32,11 @@
           </div>
           <div class="text-start col-3 mb-4" >
               <label class="fw-bold">Quantidade em estoque</label>
-              <input class="form-control my-1 mr-sm-2" v-model="this.product.stock" required />
+              <input class="form-control my-1 mr-sm-2" type="number" v-model="this.product.stock" required />
           </div>
           <div class="text-start col-3 mb-4" >
               <label class="fw-bold">Valor por {{ this.product.unit_type }}</label>
-              <input class="form-control my-1 mr-sm-2" v-model="this.product.price" required/>
+              <input class="form-control my-1 mr-sm-2" type="number" v-model="this.product.price" required/>
           </div>
           <div class="text-start col-3 mb-4" >
               <div class="form-check">
@@ -79,12 +79,16 @@ export default {
       async submit(){
                 await axios
                         .post(`http://127.0.0.1:3000/products`, this.product)
-                        .then(),
-                this.$router.push("/products" )
+                        .then(response => {
+                            if(response.status == 201 ){
+                                alert("Produto criado com sucesso")
+                                this.product = {}
+                            }
+                        })
             },
-        cancelSubmit(){
-            this.$router.push("/products")
-      }
+            cancelSubmit(){
+                this.$router.push("/products")
+            },
     }
 }
 </script>
