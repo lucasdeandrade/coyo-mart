@@ -36,7 +36,7 @@
           </thead>
           <tbody>
             <tr v-for="(product, index) in filteredProducts" :key="index" @click="showProduct(product.id)">
-              <td class="col"><p>Implementar</p></td> 
+              <td class="col"><div class="card bg-body-secondary productImg"><img src="" alt=""></div></td> 
               <td class="col"><p>{{ product.name }}</p></td>
               <td class="col"><p>{{ setCategory(product.category_id)}}</p></td>
               <td class="col"><p>{{ product.unit_type }}</p></td>
@@ -116,4 +116,8 @@
         max-width: 30ch;
         white-space: nowrap;
       }
+    .productImg{
+      height: 40px;
+      width: 40px;
+    }
   </style>
