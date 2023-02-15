@@ -8,6 +8,7 @@ import ClientCreate from '../views/ClientCreate.vue'
 import ClientShow from '../views/ClientShow.vue'
 import ClientEdit from '../views/ClientEdit.vue'
 import CategoriesView from '../views/CategoriesView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 
 
@@ -56,7 +57,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/categories',
     name: 'CategoriesView',
     component: CategoriesView
-  }
+  },
+  {
+    path: '/',
+    name: 'DashboardsView',
+    component: DashboardView
+  },
 ]
 
 const router = createRouter({

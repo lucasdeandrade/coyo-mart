@@ -27,7 +27,7 @@
   </div>  
 
   <header class="text-start text-white shadow-sm px-2 py-2 mb-4 bg-dark-subtle"><h3>Categorias</h3> </header>
-  <div class="col-11 shadow main"> 
+  <div class="col-11 shadow"> 
     <div class="row justify-content-between pt-3 px-3">
       <h5 class="card-title col-5 align-self-center pb-0 text-start">Listagem de Categorias</h5>
       <div class="col-4 align-self-end input">
@@ -38,7 +38,7 @@
       </div>
     </div>
     <hr class="mx-2">  
-    <div class="p-2">
+    <div class="p-2 main">
       <table class="table table-hover">
         <thead>
           <tr class="bg-dark-subtle">
