@@ -1,29 +1,34 @@
 <template>
   <div class="row flex-nowrap">
-    <div class="col-2 sidebar p-0 ">
-      <img class="coyo_logo" src="./assets/coyo_logo.png" alt="">
-      <div @click="this.$router.push('/')" class="nav-item p-1 mb-1">Inicio</div>
-      <div @click="this.$router.push('/categories')" class="nav-item p-1 mb-1">Categorias</div>
-      <div @click="this.$router.push('/products')" class="nav-item p-1 mb-1">Produtos</div>
-      <div @click="this.$router.push('/clients')" class="nav-item p-1">Clientes</div>
+    <div class="col-2 sidebar p-0">
+      <img class="coyo_logo" src="./assets/coyo_logo.png" alt="" />
+      <div @click="this.$router.push('/')" class="nav-item p-1 mb-1">
+        Inicio
+      </div>
+      <div @click="this.$router.push('/categories')" class="nav-item p-1 mb-1">
+        Categorias
+      </div>
+      <div @click="this.$router.push('/products')" class="nav-item p-1 mb-1">
+        Produtos
+      </div>
+      <div @click="this.$router.push('/clients')" class="nav-item p-1">
+        Clientes
+      </div>
     </div>
-    <div class="col">  
+    <div class="col">
       <router-view />
     </div>
   </div>
 </template>
 
 <script >
-
-  export default {
-
-    created() {
-      this.$store.dispatch('getProducts')
-      this.$store.dispatch('getClients')
-      this.$store.dispatch('getCategories')
-    }
-
-  }
+export default {
+  created() {
+    this.$store.dispatch("getProducts");
+    this.$store.dispatch("getClients");
+    this.$store.dispatch("getCategories");
+  },
+};
 </script>
 
 <style lang="scss">
@@ -40,9 +45,9 @@
   background-color: rgb(43, 42, 115);
   height: 100vh;
 }
-.coyoButton{
-    width: 80px;
-  }
+.coyoButton {
+  width: 80px;
+}
 
 .nav-item {
   cursor: pointer;
@@ -54,21 +59,20 @@
 .coyo_logo {
   width: 200px;
 }
-.main{  
+.main {
   max-height: 82vh;
-  overflow-y:scroll;
+  overflow-y: scroll;
   overflow-x: hidden;
   &::-webkit-scrollbar-track {
-  background: transparent;        /* color of the tracking area */
+    background: transparent; /* color of the tracking area */
   }
   &::-webkit-scrollbar {
-    width: 10px;               /* width of the entire scrollbar */
-         /* color of the tracking area */
+    width: 10px; /* width of the entire scrollbar */
+    /* color of the tracking area */
   }
   &::-webkit-scrollbar-thumb {
-    background-color: lightgray;    /* color of the scroll thumb */
-    border-radius: 20px;  
+    background-color: lightgray; /* color of the scroll thumb */
+    border-radius: 20px;
   }
 }
-
 </style>

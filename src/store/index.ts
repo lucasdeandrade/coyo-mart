@@ -10,37 +10,37 @@ export default createStore({
   getters: {
   },
   mutations: {
-    getProducts(state, products){
+    getProducts(state, products) {
       state.products = products;
     },
-    getClients(state, clients){
+    getClients(state, clients) {
       state.clients = clients;
     },
-    getCategories(state, categories){
+    getCategories(state, categories) {
       state.categories = categories;
     }
   },
   actions: {
-    async getProducts({commit}){
-        await axios
-              .get('http://127.0.0.1:3000/products')
-              .then(response => {
-                commit('getProducts', response.data);
-              })
-    },
-    async getClients({commit}){
+    async getProducts({ commit }) {
       await axios
-            .get('http://127.0.0.1:3000/clients')
-            .then(response => {
-              commit('getClients', response.data);
-            })
+        .get('http://127.0.0.1:3000/products')
+        .then(response => {
+          commit('getProducts', response.data);
+        })
     },
-    async getCategories({commit}){
+    async getClients({ commit }) {
       await axios
-            .get('http://127.0.0.1:3000/categories')
-            .then(response => {
-              commit('getCategories', response.data);
-            })
+        .get('http://127.0.0.1:3000/clients')
+        .then(response => {
+          commit('getClients', response.data);
+        })
+    },
+    async getCategories({ commit }) {
+      await axios
+        .get('http://127.0.0.1:3000/categories')
+        .then(response => {
+          commit('getCategories', response.data);
+        })
     }
   },
   modules: {

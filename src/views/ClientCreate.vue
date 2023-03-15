@@ -33,9 +33,7 @@
 </template>
 
 <script>
-
 import axios from "axios";
-
 
 export default {
   data(){
@@ -44,17 +42,6 @@ export default {
       }
   },
   methods: {
-      // async submit(){
-      //     await axios
-      //             .post(`http://127.0.0.1:3000/clients`, this.client)
-      //             .then( this.$router.push("/clients") )
-      //             .catch(error => {
-      //                 if(error.response.status == 402){
-      //                   alert("Cliente já cadastrado")
-      //                 }
-      //             })
-      //             location.reload()
-      // },
       async submit(){
               await axios
                       .post(`http://127.0.0.1:3000/clients`, this.client)
@@ -74,13 +61,10 @@ export default {
                           }
                         }
                       })
-            },
-        cancelSubmit(){
-            this.$router.push("/clients")
+      },
+      cancelSubmit(){
+          this.$router.push("/clients")
       }
-      // cancelSubmit(){
-      //     this.$router.push("/clients")
-      // }
   }
 }
 </script>
